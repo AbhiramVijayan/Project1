@@ -12,12 +12,13 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 
 @Configuration
 @EnableElasticsearchRepositories(basePackages  ="com.adfolks.project1.repository")
-@ComponentScan(basePackages = {"com.adfolks.project1"})
-public class Config extends AbstractElasticsearchConfiguration {
+//@ComponentScan(basePackages = {"com.adfolks.project1"})
+public class ElasticSearchClientConfigure extends AbstractElasticsearchConfiguration {
     @Value("${elasticsearch.url}")
     public String elasticsearchUrl;
-    @Bean
     @Override
+    @Bean
+
     public RestHighLevelClient elasticsearchClient() {
         final ClientConfiguration config= ClientConfiguration.builder()
                 .connectedTo(elasticsearchUrl)

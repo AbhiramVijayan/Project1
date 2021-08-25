@@ -21,7 +21,7 @@ public class DepartmentController {
 
     @GetMapping("/departments")
     public List<Department> fetchDepartment() {
-        return departmentService.fetchDepartment();
+        return (List<Department>) departmentService.fetchDepartment();
     }
 
     @GetMapping("/departments/{id}")
@@ -36,9 +36,9 @@ public class DepartmentController {
         return "Department deleted successfully";
     }
 
-    @GetMapping("/departments/name/{name}")
-    public Department fetchDepartmentByName(@PathVariable("name") String departmentName) {
-        return departmentService.fetchDepartmentByName(departmentName);
-    }
+//    @GetMapping("/departments/name/{name}")
+//    public Department fetchDepartmentByName(@PathVariable("name") String departmentName) {
+//        return departmentService.fetchDepartmentByName(departmentName);
+//    }
 
 }

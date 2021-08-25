@@ -1,15 +1,17 @@
 package com.adfolks.project1.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
-@Entity
+
+
+@Document(indexName = "departmentid")
+@Setting(settingPath = "static/es-settings.json")
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long departmentId;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long departmentid;
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
@@ -18,18 +20,18 @@ public class Department {
     }
 
     public Department(Long departmentId, String departmentName, String departmentAddress, String departmentCode) {
-        this.departmentId = departmentId;
+        this.departmentid = departmentId;
         this.departmentName = departmentName;
         this.departmentAddress = departmentAddress;
         this.departmentCode = departmentCode;
     }
 
     public Long getDepartmentId() {
-        return departmentId;
+        return departmentid;
     }
 
     public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
+        this.departmentid = departmentid;
     }
 
     public String getDepartmentName() {
@@ -59,7 +61,7 @@ public class Department {
     @Override
     public String toString() {
         return "Department{" +
-                "departmentId=" + departmentId +
+                "departmentId=" + departmentid +
                 ", departmentName='" + departmentName + '\'' +
                 ", departmentAddress='" + departmentAddress + '\'' +
                 ", departmentCode='" + departmentCode + '\'' +
