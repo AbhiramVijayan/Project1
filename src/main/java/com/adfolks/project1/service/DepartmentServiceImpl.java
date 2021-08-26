@@ -31,10 +31,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void deleteDepartmentByID(Long departmentId) {
         departmentRepository.deleteById(departmentId);
     }
-//
-//    @Override
-//    public Department fetchDepartmentByName(String departmentName) {
-//        return  departmentRepository.findByDepartmentName(departmentName);
-//
-//    }
+
+
+
+    @Override
+    public Department fetchDepartmentByName(String departmentName) {
+        return  departmentRepository.findByDepartmentName(departmentName);
+
+    }
 }

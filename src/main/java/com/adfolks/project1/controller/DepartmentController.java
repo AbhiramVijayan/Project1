@@ -2,16 +2,17 @@ package com.adfolks.project1.controller;
 
 import com.adfolks.project1.entity.Department;
 import com.adfolks.project1.service.DepartmentService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
-
 
     @PostMapping("/departments")
     public Department saveDepartment(@RequestBody Department department) {
@@ -36,9 +37,9 @@ public class DepartmentController {
         return "Department deleted successfully";
     }
 
-//    @GetMapping("/departments/name/{name}")
-//    public Department fetchDepartmentByName(@PathVariable("name") String departmentName) {
-//        return departmentService.fetchDepartmentByName(departmentName);
-//    }
+    @GetMapping("/departments/name/{name}")
+    public Department fetchDepartmentByName(@PathVariable("name") String departmentName) {
+        return departmentService.fetchDepartmentByName(departmentName);
+    }
 
 }

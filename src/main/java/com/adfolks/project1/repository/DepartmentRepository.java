@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface DepartmentRepository  extends ElasticsearchRepository<Department,Long> {
 
 
+    Department findByDepartmentName(String departmentName);
 }

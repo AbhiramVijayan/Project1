@@ -13,5 +13,7 @@ public interface DepartmentService {
 
    void deleteDepartmentByID(Long departmentId);
 
+   Department fetchDepartmentByName(String departmentName);
+
 //   Department fetchDepartmentByName(String departmentName);
 }
