@@ -1,8 +1,10 @@
 package com.adfolks.project1.controller;
 
+import com.adfolks.project1.MQConfig;
 import com.adfolks.project1.entity.Department;
 import com.adfolks.project1.service.DepartmentService;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ import java.util.logging.Logger;
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
+    @Autowired
+    private RabbitTemplate template;
 
     @Bean
     public Docket api() {
@@ -43,6 +47,9 @@ public class DepartmentController {
 
     @PostMapping("/departments")
     public Department saveDepartment(@RequestBody Department department) {
+        System.out.println(template);
+        template.convertAndSend(MQConfig.EXCHANGE, MQConfig.ROUTING_KEY, department);
+
         return departmentService.saveDepartment(department);
     }
 
